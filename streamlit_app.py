@@ -1,33 +1,30 @@
-
-import numpy as np
-import altair as alt
-import pandas as pd
 import streamlit as st
+from datetime import time, datetime
 
-st.header("st.write")
+st.header("st.slider")
 
-st.write("Hello, *world!* :sunglasses:")
+st.subheader("slider")
+age = st.slider("How old are you?", 0, 130, 25)
+st.write(f"I'm {age} years old")
 
-st.write(1234)
+st.subheader("Range slider")
+values = st.slider(
+     "Select a range of values",
+     0.0, 100.0, (25.0, 75.0)
+)
+st.write("Values:", values)
 
-df = pd.DataFrame({
-    "first column": [1, 2, 3, 4],
-    "second column": [10, 20, 30, 40]
-})
-st.write(df)
+st.subheader("Range time slider")
+appointment = st.slider(
+     "Schedule your appointment:",
+     value=(time(11, 30), time(12, 45))
+)
+st.write("You're scheduled for:", appointment)
 
-st.write("Below is a DataFrame:", df, "Above is a dataframe.")
-
-# dict_df2 = np.random.randn(200, 3)
-# df2 = pd.DataFrame({"a": dict_df2[:, 0], "b": dict_df2[:, 1], "c": dict_df2[:, 2]})
-# c = alt.Chart(df2).mark_circle().encode(
-#     x="a", y="b", size="c", color="c", tooltip=["a", "b", "c"],
-# )
-# st.write(c)
-
-df2 = pd.DataFrame(
-     np.random.randn(200, 3),
-     columns=['a', 'b', 'c'])
-c = alt.Chart(df2).mark_circle().encode(
-     x='a', y='b', size='c', color='c', tooltip=['a', 'b', 'c'])
-st.write(c)
+st.subheader("Datetime slider")
+start_time = st.slider(
+     "When do you start?",
+     value=datetime(2020, 1, 1, 9, 30),
+     format="MM/DD/YY - hh:mm"
+)
+st.write("Start time:", start_time)
