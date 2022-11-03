@@ -12,3 +12,6 @@ secondaryBackgroundColor="#AED6F1"
 textColor="#FFFFFF"
 font="monospace"
 """)
+
+number = st.sidebar.slider("Select a number:", 0, 10, 5)
+st.write("Select number from slider widget is:", number)
